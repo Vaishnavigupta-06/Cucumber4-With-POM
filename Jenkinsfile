@@ -5,13 +5,13 @@ pipeline {
       parallel {
         stage('Maven Version') {
           steps {
-            bat 'mvn -v'
+            sh 'mvn -v'
           }
         }
 
         stage('Java Version') {
           steps {
-            bat 'java -version'
+            sh 'java -version'
           }
         }
 
