@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(['deploy']) {
-   sh 'scp -o StrictHostKeyChecking=no /demoo_master/target/Testt-0.0.1-SNAPSHOT.jar ubuntu@13.55.100.146:/opt/tomcat/webapps'
+   sh 'scp -o StrictHostKeyChecking=no /webapp/target/webapp.war ubuntu@13.55.100.146:/opt/tomcat/webapps'
 }
                 
             }
