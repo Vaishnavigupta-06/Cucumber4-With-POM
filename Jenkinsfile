@@ -1,30 +1,23 @@
-pipeline {
-  agent any
-  stages {
-    stage('Maven Version') {
-      parallel {
-        stage('Maven Version') {
-          steps {
-            sh 'mvn -v'
-          }
-        }
-
-        stage('Java Version') {
-          steps {
-            sh 'java -version'
-          }
-        }
-
-      }
+ipeline {
+    agent any
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
     }
-
-    stage('Build') {
+    stages {
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
+            }
+        }
+        stage('Build') {
             steps {
                 
                 sh 'mvn -B -DskipTests clean package'
                 
             }
         }
-
-  }
+     }
+  
 }
